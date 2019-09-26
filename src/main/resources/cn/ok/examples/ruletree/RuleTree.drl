@@ -1,0 +1,63 @@
+package cn.ok.examples.ruletree
+import cn.ok.domains.Message;
+import cn.ok.domains.RuleTreeOrbit;
+
+rule "rule_1"
+    no-loop true
+    when
+        $orbit : RuleTreeOrbit()
+        $m : Message( status == 1 )
+    then
+        $orbit.getRuleOrbit().add( "rule_1" );
+        update( $orbit );
+end
+
+rule "rule_1_1"
+    no-loop true
+    when
+        $orbit : RuleTreeOrbit( ruleOrbit contains "rule_1" )
+        $m : Message( message == "message_1" )
+    then
+        $orbit.getRuleOrbit().add( "rule_1_1" );
+        update( $orbit );
+end
+
+rule "rule_1_2"
+    no-loop true
+    when
+        $orbit : RuleTreeOrbit( ruleOrbit contains "rule_1" )
+        $m : Message( message == "message_2" )
+    then
+        $orbit.getRuleOrbit().add( "rule_1_2" );
+        update( $orbit );
+end
+
+rule "rule_2"
+    no-loop true
+    when
+        $orbit : RuleTreeOrbit()
+        $m : Message( status == 2 )
+    then
+        $orbit.getRuleOrbit().add( "rule_2" );
+        update( $orbit );
+end
+
+rule "rule_2_1"
+    no-loop true
+    when
+        $orbit : RuleTreeOrbit( ruleOrbit contains "rule_2" )
+        $m : Message( message == "message_1" )
+    then
+        $orbit.getRuleOrbit().add( "rule_2_1" );
+        update( $orbit );
+end
+
+rule "rule_2_2"
+    no-loop true
+    when
+        $orbit : RuleTreeOrbit( ruleOrbit contains "rule_2" )
+        $m : Message( message == "message_2" )
+    then
+        $orbit.getRuleOrbit().add( "rule_2_2" );
+        update( $orbit );
+end

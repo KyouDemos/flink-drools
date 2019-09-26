@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="INFO">
+    <Appenders>
+        <Console name="Console" target="SYSTEM_OUT">
+            <PatternLayout pattern="%highlight{%d %t %-5p - %m%n}"/>
+        </Console>
+    </Appenders>
+    <Loggers>
+        <logger name="org.drools" level="WARN"/>
+        <logger name="org.kie" level="WARN"/>
+        <logger name="cn.ok" level="DEBUG"/>
+        <Root level="INFO">
+            <AppenderRef ref="Console"/>
+        </Root>
+    </Loggers>
+</Configuration>

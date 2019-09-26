@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kmodule xmlns="http://www.drools.org/xsd/kmodule">
+    <kbase packages="cn.ok.examples.helloworld">
+        <ksession name="HelloWorldKS"/>
+    </kbase>
+    <kbase packages="cn.ok.examples.ruleexecutionorder" default="true">
+        <ksession name="RuleExecutionOrderKS"/>
+    </kbase>
+    <kbase packages="cn.ok.examples.paramtest">
+        <ksession name="ParamTestKS"/>
+    </kbase>
+    <kbase packages="cn.ok.examples.stateless">
+        <ksession name="StatelessKS" type="stateless"/>
+    </kbase>
+    <kbase packages="cn.ok.examples.ruletree">
+        <ksession name="RuleTreeKS"/>
+    </kbase>
+</kmodule>
