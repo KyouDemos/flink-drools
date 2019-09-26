@@ -2,6 +2,8 @@ package cn.ok.examples.ruletree
 import cn.ok.domains.Message;
 import cn.ok.domains.RuleTreeOrbit;
 
+dialect "mvel"
+
 rule "rule_1"
     no-loop true
     when

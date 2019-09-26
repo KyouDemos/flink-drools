@@ -23,8 +23,13 @@ public class FlinkDrools {
     public static void main(String[] args) throws Exception {
 
         StreamExecutionEnvironment env = StreamExecutionEnvironment.getExecutionEnvironment();
+        // 设置全局并行度
+        env.setParallelism(3);
+
+        // 设置数据源
         DataStreamSource<Message> dssMessage = env.addSource(new FlinkDataSource());
 
+        // 设置数据源并行度
         dssMessage.setParallelism(1);
 
         dssMessage.map((MapFunction<Message, Message>) message -> {
@@ -46,13 +51,15 @@ public class FlinkDrools {
             // 用时统计
             log.info("message.id: {}; used: {} ms.", message.getId(), stopwatch.stop().elapsed(TimeUnit.MILLISECONDS));
 
+            Thread.sleep(2000);
+
             return message;
-        }).name("MapName").setParallelism(2).addSink(new SinkFunction<Message>() {
+        }).name("MapFirRule").addSink(new SinkFunction<Message>() {
             @Override
             public void invoke(Message value, Context context) {
                 log.warn("sink: {}", value);
             }
-        }).name("SinkName").setParallelism(2);
+        }).name("SinkLog");
 
         env.execute("Flink Drools");
     }
