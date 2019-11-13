@@ -9,7 +9,7 @@
         <logger name="org.drools" level="WARN"/>
         <logger name="org.kie" level="WARN"/>
         <logger name="cn.ok" level="DEBUG"/>
-        <Root level="INFO">
+        <Root level="WARN">
             <AppenderRef ref="Console"/>
         </Root>
     </Loggers>
