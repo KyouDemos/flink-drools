@@ -10,7 +10,7 @@ import org.apache.flink.streaming.api.windowing.time.Time;
 /**
  * @author kyou on 2019-11-13 09:47
  */
-public class windowDemo {
+public class WindowDemo {
     public static void main(String[] args) throws Exception {
 
         // set up the execution environment
